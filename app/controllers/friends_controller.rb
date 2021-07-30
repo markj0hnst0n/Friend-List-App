@@ -5,7 +5,9 @@ class FriendsController < ApplicationController
 
   # GET /friends or /friends.json
   def index
-    @friends = Friend.all
+    
+    @q = Friend.ransack(params[:q])
+    @friends = @q.result
   end
 
   # GET /friends/1 or /friends/1.json
